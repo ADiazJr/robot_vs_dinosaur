@@ -8,16 +8,25 @@ class Battlefield():
     
     def run_game(self):
         self.display_welcome()
-        while (self.dinosaur.health >= 1) or (self.robot.health >= 1):
+        self.death = False
+        while self.death is False:
             self.battle_phase()
-        self.display_winner
+        self.display_winner()
 
     def display_welcome(self):
         print("Hello today you will see a robot fight a dinosaur on Mustafar")
 
     def battle_phase(self):
-        self.dinosaur.attack(self.robot)
-        self.robot.attack(self.dinosaur)
+        if self.dinosaur.health >= 1:
+            self.dinosaur.attack(self.robot)
+        elif self.dinosaur.health <= 0:
+            self.death = True
+            return self.death
+        if self.robot.health >= 1:
+            self.robot.attack(self.dinosaur)
+        elif self.robot.health <= 0:
+            self.death = True
+            return self.death
 
     def display_winner(self):
         if self.dinosaur.health >= 1:
