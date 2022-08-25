@@ -1,4 +1,4 @@
 from battlefield import Battlefield
 
 Mustafar = Battlefield()
-Mustafar.battle_phase()
+Mustafar.run_game()

@@ -7,13 +7,20 @@ class Battlefield():
         self.dinosaur = Dinosaur("Fakezilla", 20)
     
     def run_game(self):
-        pass
+        self.display_welcome()
+        while (self.dinosaur.health >= 1) or (self.robot.health >= 1):
+            self.battle_phase()
+        self.display_winner
 
     def display_welcome(self):
-        pass
+        print("Hello today you will see a robot fight a dinosaur on Mustafar")
 
     def battle_phase(self):
         self.dinosaur.attack(self.robot)
+        self.robot.attack(self.dinosaur)
 
     def display_winner(self):
-        pass
+        if self.dinosaur.health >= 1:
+            print("Dinosaur Wins!")
+        elif self.robot.health >= 1:
+            print("Robot Wins!")

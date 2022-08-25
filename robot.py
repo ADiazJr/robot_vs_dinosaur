@@ -6,4 +6,5 @@ class Robot():
         self.active_weapon = Weapon("Laser Beam", 25)
     
     def attack(self, dinosaur):
-        dinosaur.health -= Weapon.attack_power
+        dinosaur.health = (dinosaur.health - self.active_weapon.attack_power)
+        print(f"Robot hits for {self.active_weapon.attack_power} damage. Dinosaur is now at {dinosaur.health}")
