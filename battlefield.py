@@ -1,10 +1,10 @@
-from robot import Robot
-from dinosaur import Dinosaur
+from fleet import Fleet
+from herd import Herd
 
 class Battlefield():
     def __init__(self):
-        self.robot = Robot("Robot")
-        self.dinosaur = Dinosaur("Fakezilla", 20)
+        self.fleet = Fleet()
+        self.herd = Herd()
         self.death = False
 
     def run_game(self):
@@ -14,22 +14,22 @@ class Battlefield():
         self.display_winner()
 
     def display_welcome(self):
-        print("Hello today you will see a robot fight a dinosaur on Mustafar")
+        print("Hello today you will see a Fleet of robots fight a herd of dinosaurs")
 
     def battle_phase(self):
-        if self.dinosaur.health >= 1:
-            self.dinosaur.attack(self.robot)
-        elif self.dinosaur.health <= 0:
+        if self.herd.herd_health >= 1:
+            self.herd.attack(self.fleet)
+        elif self.herd.herd_health <= 0:
             self.death = True
             return
-        if self.robot.health >= 1:
-            self.robot.attack(self.dinosaur, 1)
-        elif self.robot.health <= 0:
+        if self.fleet.fleet_health >= 1:
+            self.fleet.attack(self.herd)
+        elif self.fleet.fleet_health <= 0:
             self.death = True
             return
 
     def display_winner(self):
-        if self.dinosaur.health >= 1:
-            print("Dinosaur Wins!")
-        elif self.robot.health >= 1:
-            print("Robot Wins!")
+        if self.herd.herd_health >= 1:
+            print("Herd Wins!")
+        elif self.fleet.fleet_health >= 1:
+            print("Fleet Wins!")
