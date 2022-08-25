@@ -6,4 +6,4 @@ class Robot():
         self.active_weapon = Weapon()
     
     def attack(self, dinosaur):
-        pass
+        dinosaur.health -= Weapon().attack_power
