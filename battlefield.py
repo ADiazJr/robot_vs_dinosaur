@@ -5,10 +5,10 @@ class Battlefield():
     def __init__(self):
         self.robot = Robot("Robot")
         self.dinosaur = Dinosaur("Fakezilla", 20)
-    
+        self.death = False
+
     def run_game(self):
         self.display_welcome()
-        self.death = False
         while self.death is False:
             self.battle_phase()
         self.display_winner()
@@ -21,12 +21,12 @@ class Battlefield():
             self.dinosaur.attack(self.robot)
         elif self.dinosaur.health <= 0:
             self.death = True
-            return self.death
+            return
         if self.robot.health >= 1:
-            self.robot.attack(self.dinosaur)
+            self.robot.attack(self.dinosaur, 1)
         elif self.robot.health <= 0:
             self.death = True
-            return self.death
+            return
 
     def display_winner(self):
         if self.dinosaur.health >= 1:
